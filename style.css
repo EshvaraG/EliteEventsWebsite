@@ -1,0 +1,812 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root{
+    --cir1:#aaa;
+    --cir2:deeppink;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Poppins",sans-serif;
+    text-decoration:none;
+    text-transform:uppercase;
+    border:none;
+}
+
+html{
+    font-size:65%;
+    scroll-behavior:smooth;
+    scroll-padding-top:7rem;
+    overflow-x:hidden;
+}
+
+html::-webkit-scrollbar{
+    width:1rem;
+}
+
+html::-webkit-scrollbar-track{
+    background:var(--cir2);
+}
+
+html::-webkit-scrollbar-thumb{
+    background:var(--cir1);
+}
+
+section{
+    min-height:100vh;
+    padding:1rem 10%;
+    background:bisque;
+}
+
+/*================ BUTTON =================*/
+
+.btn{
+    position:relative;
+    display:inline-block;
+    margin:15px;
+    padding:10px 30px;
+    font-size:18px;
+    color:#aaa;
+    background:#fff;
+    border-radius:10px;
+    cursor:pointer;
+    box-shadow:inset 0 0 0 0 deeppink;
+    transition:.5s;
+}
+
+.btn:hover{
+    color:#fff;
+    box-shadow:inset 0 -100px 0 0 deeppink;
+}
+
+.btn:active{
+    transform:scale(.9);
+}
+
+/*================ HEADINGS =================*/
+
+span,
+.fa-heart{
+    color:deeppink;
+}
+
+.heading{
+    text-align:center;
+    padding-top:3rem;
+    font-size:5rem;
+    color:#333;
+}
+
+.bar{
+    display:block;
+    width:12rem;
+    margin:auto;
+    padding-bottom:2rem;
+}
+
+/*================ HEADER =================*/
+
+.head{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    background: deeppink;   /* Transparent header */
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 1.5rem 8%;
+    z-index: 1000;
+}
+
+.head .logo{
+    color: #fff;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.head .navbar{
+    display: flex;
+}
+
+.head .navbar a{
+    color: #fff;
+    font-size: 1.7rem;
+    margin-left: 2rem;
+}
+
+.head .navbar a:hover{
+    color: deeppink;
+}
+
+/*================ HAMBURGER =================*/
+
+#menu{
+    display: block;
+    font-size: 3rem;
+    color: #fff;
+    cursor: pointer;
+}
+
+#menu:hover{
+    color: #000;
+}
+
+
+
+/*---Arrows for the Service Section---*/
+
+.swiper-button-next,
+.swiper-button-prev{
+    color: deeppink;
+    font-weight: bold;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover{
+    color: #ff69b4;
+}
+
+
+
+
+
+/*================ HOME =================*/
+
+.home{
+    padding-top:15rem;
+    background:
+    linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),
+    url("images/image2.jpg");
+
+    background-position:center;
+    background-size:cover;
+}
+
+.home .content{
+    text-align:center;
+    padding-top:10rem;
+    max-width:80rem;
+    margin:auto;
+}
+
+.home .content p{
+    font-size:3rem;
+    color:var(--cir2);
+    letter-spacing:.5rem;
+}
+
+.home .content h3{
+    color:#fff;
+    font-size:4.6rem;
+    font-weight:bold;
+}
+
+/*================ ABOUT =================*/
+
+.about{
+    text-align:center;
+}
+
+.about .container{
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:2rem;
+    padding-top:2rem;
+}
+
+.about .container .im{
+    flex:1 1 40rem;
+}
+
+.about .container .im img{
+    width:100%;
+    border-radius:.5rem;
+    border:.5rem solid #aaa;
+}
+
+.about .container .content{
+    flex:1 1 40rem;
+}
+
+.about .container .content h3{
+    font-size:3.5rem;
+    color:#aaa;
+}
+
+.about .container .content p{
+    font-size:1.6rem;
+    line-height:3rem;
+    text-transform:capitalize;
+    color:#333;
+}
+
+/*---Service Page---*/
+
+.service-info{
+    text-align: center;
+    margin: 2rem 0 3rem;
+}
+
+.service-info h3{
+    font-size: 3rem;
+    color: deeppink;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.service-info p{
+    font-size: 1.8rem;
+    color: #555;
+    text-transform: none;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+.service-slider .swiper-slide{
+    overflow: hidden;
+    background: var(--cir2);
+    border-radius: .4rem;
+    height: 50rem;
+    width: 35rem;
+    text-align: center;
+    font-size: 3rem;
+    position: relative;
+}
+
+.service-slider .swiper-slide img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/*================ RESPONSIVE =================*/
+
+@media (max-width:991px){
+
+    html{
+        font-size:55%;
+    }
+
+}
+
+
+
+    .head .navbar{
+    display:none;
+    position:absolute;
+    top:100%;
+    right:0;
+    width:250px;
+    background:#333;
+    flex-direction:column;
+}
+
+
+    .head .navbar.active{
+        display:flex;
+    }
+
+    .head .navbar a{
+    color:#fff;
+    font-size:1.7rem;
+    padding:1.5rem;
+    border-bottom:1px solid rgba(255,255,255,.2);
+    text-align:center;
+}
+
+
+
+@media (max-width:450px){
+
+    html{
+        font-size:50%;
+    }
+
+}
+
+/*---Price Container---*/
+.price .price-container
+{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(25rem,1fr));
+    gap:1.5rem;
+}
+
+.price .price-container .price-box
+{
+    padding:2rem 0;
+    background:#eee;
+    border-radius:.5rem;
+    text-align:center;
+
+    /* ADD THESE */
+    display:flex;
+    flex-direction:column;
+}
+
+.price .price-container .price-box .package
+{
+    background: var(--cir2);
+    color: #000;
+    padding: 1.5rem 0;
+    font-size:2rem;
+}
+
+.price .price-container .price-box .amount
+{
+    
+    padding: 2rem;
+    font-size:4rem;
+}
+
+.price .price-container .price-box .fa-square-check
+{
+    padding-right: .5rem;
+    color: deeppink;
+}
+
+.price .price-container .price-box p
+{
+    font-size: 1.5rem;
+    color: #000;
+    padding: .5rem 0;
+}
+.price .price-container .price-box .btn
+{
+    margin-top:auto;
+    align-self:center;
+    margin-bottom:2rem;
+}
+
+
+/*---Gallery---*/
+.gallery .inner-box
+{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(30rem,1fr));
+    gap: 1.5rem;
+}
+.gallery-box{
+    height: 40rem;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,.2);
+}
+
+.gallery-box img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 8px;
+    transition: transform .5s;
+}
+.gallery-content
+{
+    width: 100%;
+    height: 0;
+    background: linear-gradient(transparent,aliceblue 60%);
+    border-radius: 5px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 20px;
+    text-align: center;
+    transition: height .5s;
+}
+.gallery-content h3
+{
+    font-size: 2rem;
+    text-transform: uppercase;
+    color: var(--cir2);
+    margin-bottom: 5px;
+    margin-top: 70%;
+    font-weight: 700;
+}
+.gallery-content h3:hover
+{
+    letter-spacing: 2px;
+    transition: .5s ease-in-out;
+}
+.gallery-content p
+{
+    font-size: 1rem;
+    text-transform: capitalize;
+    padding: .5rem 0;
+    line-height: 1.5rem;
+}
+.gallery-box:hover .gallery-content
+{
+    height: 100%;
+}
+.gallery-box:hover img
+{
+    transform: scale(1.2);
+}
+
+
+/*---Client Review Section---*/
+.review .review-sec
+{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(30rem,1fr));
+    gap: 1.5rem;
+}
+.review .review-box
+{
+    border-radius: .2rem;
+    background: var(--cir1);
+    padding: 2rem;
+    position: relative;
+}
+.review .review-box .fa-quote-right
+{
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    color: #fff;
+    font-size: 5rem;
+}
+.review .review-box .user
+{
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding-bottom: 1rem;
+}
+.review .review-box .user img
+{
+    height: 7rem;
+    width: 7rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.review .review-box .user h3
+{
+    font-size: 2rem;
+    color: #fff;
+}
+.review .review-box p
+{
+    line-height: 2;
+    color: #eee;
+    padding: .5rem 0;
+    font-size: 1.6rem;
+}
+.rate
+{
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+    gap: .3rem;
+}
+.rate .fa-star,
+.rate .fa-star-half{
+    color: gold;
+    font-size: 2.8rem;
+}
+
+.rate .fa-heart{
+    color: deeppink;
+    font-size: 2.5rem;
+}
+
+.rate p{
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+
+/*---Footer Section---*/
+.contact
+{
+    padding-top: 3rem;
+}
+
+.contact-inner
+{
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   align-items: center; 
+}
+
+.contact-inner-col
+{
+    margin: 2rem;
+    flex: 1 1 20rem;
+    text-align: center;
+}
+
+.contact-inner-col h1
+{
+    padding: 1rem 0;
+    color: var(--cir1);
+    font-size: 3rem;
+    letter-spacing: .1rem;
+    text-transform: capitalize;
+}
+
+.contact-inner-col p
+{
+    padding: .5rem 0;
+    line-height: 1.5rem;
+    font-size: 1.3rem;
+    text-transform: capitalize;
+    color: var(--cir1);
+}
+
+.contact-inner-col input,
+.contact-inner-col textarea
+{
+    width: 80%;
+    padding: 1rem;
+    margin-bottom: 1.2rem;
+    border: .3rem solid var(--cir2);
+}
+
+.contact-inner-col textarea
+{
+    resize: none;
+}
+
+/*--------- Location Card ---------*/
+
+.location-card
+{
+    width: 90%;
+    margin: auto;
+    padding: 30px;
+    background: #fff;
+    border: 3px solid deeppink;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,.2);
+}
+
+.location-card h2
+{
+    color: deeppink;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-transform: none;
+}
+
+.location-card p
+{
+    font-size: 1.6rem;
+    color: #444;
+    line-height: 2;
+    text-transform: none;
+}
+
+.location-card i
+{
+    color: deeppink;
+    margin-right: 8px;
+}
+
+/*--------- Footer ---------*/
+
+.cont-container
+{
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(30rem,1fr));
+    gap: 1.5rem;
+    background: aliceblue;
+}
+
+.f-container h2
+{
+    font-size: 2.5rem;
+    color: var(--cir2);
+    padding: 1rem 0;
+}
+
+.f-container a
+{
+    font-size: 1.4rem;
+    text-decoration: none;
+    color: var(--cir2);
+    padding: .5rem 0;
+    display: block;
+    width: 20rem;
+    margin-top: 1rem;
+}
+
+.f-container i
+{
+    padding-right: .5rem;
+    color: var(--cir1);
+}
+
+.f-container p
+{
+    padding-bottom: 1rem;
+    font-size: 1.5rem;
+    color: var(--cir1);
+}
+
+.f-container input
+{
+    width: 90%;
+    padding: 1rem;
+    background: #eee;
+    border: none;
+}
+
+.f-container .social i
+{
+    margin-top: 1rem;
+    font-size: 2rem;
+    background: var(--cir2);
+    color: #fff;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.f-container .social i:hover
+{
+    transform: translateY(-1rem);
+    transition: 1s ease;
+}
+
+.copyright
+{
+    padding: 2rem 0;
+    text-align: center;
+    background: var(--cir2);
+    font-size: 1.5rem;
+}
+
+.copyright p
+{
+    font-size: 1.2rem;
+    color: #000;
+}
+
+.copyright a
+{
+    color: #000;
+    font-size: 3rem;
+}
+
+.copyright a i
+{
+    color: #000;
+}
+
+
+
+
+/*---Explore Page---*/
+
+.explore{
+    padding-top:7rem;
+    min-height:100vh;
+    background:bisque;
+}
+
+.explore .container{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10rem;
+    align-items:center;
+}
+
+.explore .im{
+    flex:1 1 40rem;
+}
+
+.explore .im img{
+    width:100%;
+    border-radius:10px;
+}
+
+.explore .content{
+    flex:1 1 45rem;
+}
+
+.explore .content h3{
+    font-size:3rem;
+    color:#aaa;
+    margin-bottom:1rem;
+}
+
+.explore .content p{
+    font-size:1.8rem;
+    line-height:3rem;
+    text-transform:none;
+    color:#444;
+}
+
+.explore .content ul{
+    margin-left:2rem;
+}
+
+.explore .content li{
+    font-size:1.7rem;
+    line-height:3rem;
+    text-transform:none;
+}
+
+
+/*---Booking Form---*/
+
+#bookingForm{
+    width:70%;
+    margin:auto;
+}
+
+#bookingForm input,
+#bookingForm select,
+#bookingForm textarea{
+
+    width:100%;
+    padding:15px;
+    margin:15px 0;
+
+    border:2px solid deeppink;
+    border-radius:8px;
+
+    font-size:16px;
+
+    text-transform:none;
+}
+
+#bookingForm button{
+
+    width:100%;
+    margin-top:20px;
+
+}
+
+#bookingForm select{
+
+    background:white;
+    cursor:pointer;
+}
+
+
+/*---Back Button---*/
+
+.back-btn{
+    position: fixed;
+    top: 90px;
+    left: 20px;
+    background: deeppink;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 1.6rem;
+    text-decoration: none;
+    z-index: 10001;
+    transition: 0.3s;
+}
+
+.back-btn i{
+    margin-right: 8px;
+    color: white;
+}
+
+.back-btn:hover{
+    background: #c71585;
+}

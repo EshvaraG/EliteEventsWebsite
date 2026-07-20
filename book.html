@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Book Your Package | Elite Events</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- Back Button -->
+    <a href="javascript:history.back()" class="back-btn">
+        <i class="fa-solid fa-arrow-left"></i> Back
+    </a>
+    
+
+<header class="head">
+
+    <a href="index.html" class="logo">Elite Events</a>
+
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="index.html#service">Services</a>
+        <a href="index.html#price">Packages</a>
+        <a href="index.html#contact">Contact</a>
+    </nav>
+
+</header>
+
+<section class="contact" style="padding-top:12rem;">
+
+<h1 class="heading">
+Book <span>Your Package</span>
+</h1>
+
+<div class="contact-inner">
+
+<div class="contact-inner-col">
+
+<h1>Booking Details</h1>
+
+<form id="bookingForm">
+
+    <input
+        type="text"
+        placeholder="Full Name"
+        required>
+
+    <input
+        type="email"
+        placeholder="Email Address"
+        required>
+
+    <input
+        type="tel"
+        placeholder="Phone Number"
+        required>
+
+    <input
+        type="date"
+        required>
+
+
+    <!-- Event -->
+
+<select id="event" required>
+
+    <option value="" id="defaultEventOption">Select an Event</option>
+
+    <option value="Birthday">Birthday</option>
+
+    <option value="Baby Shower">Baby Shower</option>
+
+    <option value="Bridal Shower">Bridal Shower</option>
+
+    <option value="Wedding">Wedding</option>
+
+    <option value="Party">Party</option>
+
+    <option value="Graduation Party">Graduation Party</option>
+
+    <option>Other</option>
+
+</select>
+
+
+    <!-- Package -->
+
+    <select required>
+
+        <option value="">Choose Package</option>
+
+        <option>Package 01 - Silver - R2500</option>
+
+        <option>Package 02 - Gold - R3500</option>
+
+        <option>Package 03 - Platinum - R4300</option>
+
+        <option>Package 04 - Luxury - R5500</option>
+
+    </select>
+
+    <textarea
+    rows="6"
+    placeholder="Tell us about your event (number of guests, preferred venue, theme, colours, special requests, catering requirements, entertainment, etc.)">
+</textarea>
+
+    <button
+        type="submit"
+        class="btn">
+
+        Book Now
+
+    </button>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+
+const eventName = params.get("event");
+
+const eventDropdown = document.getElementById("event");
+const defaultOption = document.getElementById("defaultEventOption");
+
+if (eventName) {
+
+    // Automatically select the event
+    eventDropdown.value = eventName;
+
+    // Remove "Select an Event" since the event is already chosen
+    defaultOption.remove();
+
+}
+
+document.getElementById("bookingForm").addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    alert("🎉 Thank you for booking with Elite Events! We will contact you shortly.");
+
+    this.reset();
+
+});
+
+</script>
+
+</body>
+
+</html>
