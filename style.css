@@ -137,6 +137,54 @@ span,
     color: #000;
 }
 
+/*================ HEADER ACTIONS =================*/
+
+.header-actions{
+    display:flex;
+    align-items:center;
+    gap:1rem;
+}
+
+.header-btn{
+    padding:.8rem 1.8rem;
+    font-size:1.4rem;
+    border-radius:25px;
+    margin:0;
+    white-space:nowrap;
+}
+
+/* Desktop */
+@media (min-width:769px){
+
+    .header-actions{
+        display:flex;
+    }
+
+    .header-btn{
+        display:inline-block;
+    }
+
+}
+
+/* Mobile */
+@media (max-width:768px){
+
+    .header-actions{
+        display:flex;
+        align-items:center;
+        gap:.8rem;
+    }
+
+    .header-btn{
+        display:none;
+    }
+
+    #menu{
+        display:block;
+    }
+
+}
+
 
 
 /*---Arrows for the Service Section---*/
@@ -809,4 +857,191 @@ span,
 
 .back-btn:hover{
     background: #c71585;
+}
+
+
+
+/*================ AUTH PAGES ================*/
+
+.auth-page{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:
+    linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
+    url("images/wedding.jpg");
+
+    background-size:cover;
+
+    background-position:center;
+}
+
+.auth-container{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:40px;
+}
+
+.auth-box{
+
+    width:420px;
+
+    background:rgba(255,255,255,.15);
+
+    backdrop-filter:blur(15px);
+
+    border:2px solid rgba(255,255,255,.3);
+
+    border-radius:20px;
+
+    padding:40px;
+
+    text-align:center;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+
+.auth-icon{
+
+    font-size:5rem;
+
+    color:deeppink;
+
+    margin-bottom:15px;
+}
+
+.auth-box h1{
+
+    font-size:3.5rem;
+
+    color:white;
+
+    margin-bottom:10px;
+
+    text-transform:none;
+}
+
+.auth-box p{
+
+    color:white;
+
+    font-size:1.5rem;
+
+    margin-bottom:20px;
+
+    text-transform:none;
+
+    line-height:1.8;
+}
+
+.auth-box input{
+
+    width:100%;
+
+    padding:15px;
+
+    margin:12px 0;
+
+    border:none;
+
+    border-radius:10px;
+
+    outline:none;
+
+    font-size:16px;
+
+    text-transform:none;
+
+    background:white;
+}
+
+.auth-box .btn{
+
+    width:100%;
+
+    margin-top:20px;
+
+    font-size:18px;
+
+    font-weight:bold;
+}
+
+.login-link{
+
+    margin-top:20px;
+
+    color:white;
+
+    font-size:1.5rem;
+
+    text-transform:none;
+}
+
+.login-link a{
+
+    color:deeppink;
+
+    font-weight:bold;
+
+    text-decoration:none;
+}
+
+.login-link a:hover{
+
+    color:white;
+}
+
+#message{
+
+    margin-top:15px;
+
+    font-size:1.5rem;
+
+    font-weight:bold;
+
+    text-transform:none;
+}
+
+.error{
+    display:block;
+    color:#333;
+    font-size:1.3rem;
+    text-align:left;
+    margin-top:-8px;
+    margin-bottom:12px;
+    min-height:18px;
+    text-transform:none;
+}
+
+.success{
+    display:block;
+    color:#28a745;
+    font-size:1.4rem;
+    text-align:center;
+    margin-bottom:15px;
+    min-height:20px;
+    font-weight:bold;
+    text-transform:none;
+}
+
+.welcome-banner{
+    background:#ff4081;
+    color:white;
+    text-align:center;
+    padding:20px;
+    font-size:20px;
+    font-weight:bold;
 }

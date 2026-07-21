@@ -29,13 +29,62 @@
                 <a href="#gallery">Gallery</a>
                 <a href="#review">Review</a> 
                 <a href="#contact">Contact</a>
+
+                <!-- Only visible when NOT logged in -->
+                <a href="login.html" id="loginLink">Login</a>
+
+                <!-- Only visible when NOT logged in -->
+                <a href="signup.html" id="signupLink">Sign Up</a>
+
+    <!-- Visible after login -->
+    <button
+        id="logoutBtn"
+        class="btn"
+        style="display:none; margin-left:10px;">
+        Logout
+    </button>
             </nav>
 
-            <div id="menu">
-            <i class="fa-solid fa-bars"></i>
-        </div>
+
+            <div class="header-actions">
+
+    <!-- Login button -->
+    <a href="login.html"
+       id="topLoginBtn"
+       class="btn header-btn">
+        Login
+    </a>
+
+    <!-- Sign Up button -->
+    <a href="signup.html"
+       id="topSignupBtn"
+       class="btn header-btn">
+        Sign Up
+    </a>
+
+    <!-- Logout button -->
+    <button
+        id="logoutBtn"
+        class="btn header-btn"
+        style="display:none;">
+        Logout
+    </button>
+
+    <!-- Hamburger -->
+    <div id="menu">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+
+</div>
+
 
     </header>
+
+    <div id="welcomeBanner" class="welcome-banner" style="display:none;">
+    <h2>Welcome to Elite Events! 🎉</h2>
+    <p>We're glad to have you back.</p>
+</div>
+
 
     <!-- Home -->
     <section class="home" id="home">
@@ -50,6 +99,8 @@
             </h3>
 
             <a href="#contact" class="btn">Contact Us</a>
+
+            
 
         </div>
 
@@ -620,7 +671,12 @@ document.getElementById("newsletterForm").addEventListener("submit", function(e)
 
 });
 
+
+
 </script>
+
+<!-- Firebase Authentication Script -->
+<script type="module" src="index.js"></script>
 
 </body>
 </html>
