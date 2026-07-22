@@ -6,6 +6,23 @@ import {
 
 const loginBtn = document.getElementById("loginBtn");
 
+// Toast popup
+const toast = document.getElementById("toast");
+
+function showToast(message) {
+
+    toast.textContent = message;
+
+    toast.classList.add("show");
+
+    setTimeout(() => {
+
+        toast.classList.remove("show");
+
+    }, 2000);
+
+}
+
 loginBtn.addEventListener("click", async () => {
 
     const email = document.getElementById("email").value.trim();
@@ -14,12 +31,10 @@ loginBtn.addEventListener("click", async () => {
     // Clear previous messages
     document.getElementById("emailError").textContent = "";
     document.getElementById("passwordError").textContent = "";
-    document.getElementById("successMessage").textContent = "";
 
     // Email validation
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // Track validation errors
     let hasErrors = false;
 
     // Email validation
@@ -29,6 +44,7 @@ loginBtn.addEventListener("click", async () => {
             "Please enter a valid email address (e.g. name@example.com).";
 
         hasErrors = true;
+
     }
 
     // Password validation
@@ -38,9 +54,10 @@ loginBtn.addEventListener("click", async () => {
             "Please enter your password.";
 
         hasErrors = true;
+
     }
 
-    // Stop only after checking ALL fields
+    // Stop if validation failed
     if (hasErrors) {
         return;
     }
@@ -49,11 +66,13 @@ loginBtn.addEventListener("click", async () => {
 
         await signInWithEmailAndPassword(auth, email, password);
 
-        document.getElementById("successMessage").textContent =
-            "✓ Successfully logged in! Redirecting...";
+        // Show popup notification
+        showToast("✓ Successfully logged in! Redirecting...");
 
         setTimeout(() => {
+
             window.location.href = "index.html";
+
         }, 1500);
 
     }
@@ -85,6 +104,7 @@ loginBtn.addEventListener("click", async () => {
             default:
                 document.getElementById("passwordError").textContent =
                     error.message;
+
         }
 
     }

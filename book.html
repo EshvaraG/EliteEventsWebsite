@@ -17,6 +17,8 @@
 
 <body>
 
+    <div id="toast" class="toast"></div>
+
     <!-- Back Button -->
     <a href="javascript:history.back()" class="back-btn">
         <i class="fa-solid fa-arrow-left"></i> Back
@@ -52,67 +54,91 @@ Book <span>Your Package</span>
 
     <input
         type="text"
-        placeholder="Full Name"
-        required>
+        id="fullName"
+        placeholder="Full Name">
+
+    <span id="nameError" class="error"></span>
 
     <input
         type="email"
-        placeholder="Email Address"
-        required>
+        id="email"
+        placeholder="Email Address">
+
+    <span id="emailError" class="error"></span>
 
     <input
         type="tel"
-        placeholder="Phone Number"
-        required>
+        id="phone"
+        placeholder="Phone Number">
+
+    <span id="phoneError" class="error"></span>
 
     <input
         type="date"
-        required>
+        id="eventDate">
 
+    <span id="dateError" class="error"></span>
 
     <!-- Event -->
 
-<select id="event" required>
+    <select id="event">
 
-    <option value="" id="defaultEventOption">Select an Event</option>
+        <option value="" id="defaultEventOption">
+            Select an Event
+        </option>
 
-    <option value="Birthday">Birthday</option>
+        <option value="Birthday">Birthday</option>
 
-    <option value="Baby Shower">Baby Shower</option>
+        <option value="Baby Shower">Baby Shower</option>
 
-    <option value="Bridal Shower">Bridal Shower</option>
+        <option value="Bridal Shower">Bridal Shower</option>
 
-    <option value="Wedding">Wedding</option>
+        <option value="Wedding">Wedding</option>
 
-    <option value="Party">Party</option>
+        <option value="Party">Party</option>
 
-    <option value="Graduation Party">Graduation Party</option>
+        <option value="Graduation Party">Graduation Party</option>
 
-    <option>Other</option>
-
-</select>
-
-
-    <!-- Package -->
-
-    <select required>
-
-        <option value="">Choose Package</option>
-
-        <option>Package 01 - Silver - R2500</option>
-
-        <option>Package 02 - Gold - R3500</option>
-
-        <option>Package 03 - Platinum - R4300</option>
-
-        <option>Package 04 - Luxury - R5500</option>
+        <option value="Other">Other</option>
 
     </select>
 
+    <span id="eventError" class="error"></span>
+
+    <!-- Package -->
+
+    <select id="package">
+
+        <option value="">
+            Choose Package
+        </option>
+
+        <option value="Package 01">
+            Package 01 - Silver - R2500
+        </option>
+
+        <option value="Package 02">
+            Package 02 - Gold - R3500
+        </option>
+
+        <option value="Package 03">
+            Package 03 - Platinum - R4300
+        </option>
+
+        <option value="Package 04">
+            Package 04 - Luxury - R5500
+        </option>
+
+    </select>
+
+    <span id="packageError" class="error"></span>
+
     <textarea
+    id="details"
     rows="6"
-    placeholder="Tell us about your event (number of guests, preferred venue, theme, colours, special requests, catering requirements, entertainment, etc.)">
-</textarea>
+    placeholder="Tell us about your event (number of guests, preferred venue, theme, colours, special requests, catering requirements, entertainment, etc.)"></textarea>
+
+    <span id="detailsError" class="error"></span>
 
     <button
         type="submit"
@@ -149,11 +175,115 @@ if (eventName) {
 
 }
 
+// Toast
+const toast = document.getElementById("toast");
+
+function showToast(message) {
+
+    toast.textContent = message;
+
+    toast.classList.add("show");
+
+    setTimeout(() => {
+
+        toast.classList.remove("show");
+
+    }, 2000);
+
+}
+
 document.getElementById("bookingForm").addEventListener("submit", function(e){
 
     e.preventDefault();
 
-    alert("🎉 Thank you for booking with Elite Events! We will contact you shortly.");
+    // Get values
+    const fullName = document.getElementById("fullName").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const eventDate = document.getElementById("eventDate").value;
+    const event = document.getElementById("event").value;
+    const packageChoice = document.getElementById("package").value;
+    const details = document.getElementById("details").value.trim();
+
+    // Clear previous errors
+    document.getElementById("nameError").textContent = "";
+    document.getElementById("emailError").textContent = "";
+    document.getElementById("phoneError").textContent = "";
+    document.getElementById("dateError").textContent = "";
+    document.getElementById("eventError").textContent = "";
+    document.getElementById("packageError").textContent = "";
+    document.getElementById("detailsError").textContent = "";
+
+    let hasErrors = false;
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phonePattern = /^[0-9]{10}$/;
+
+    // Full Name
+    if(fullName === ""){
+        document.getElementById("nameError").textContent =
+            "Please enter your full name.";
+        hasErrors = true;
+    }
+
+    // Email
+    if(email === ""){
+        document.getElementById("emailError").textContent =
+            "Please enter your email address.";
+        hasErrors = true;
+    }
+    else if(!emailPattern.test(email)){
+        document.getElementById("emailError").textContent =
+            "Please enter a valid email address.";
+        hasErrors = true;
+    }
+
+    // Phone
+    if(phone === ""){
+        document.getElementById("phoneError").textContent =
+            "Please enter your phone number.";
+        hasErrors = true;
+    }
+    else if(!phonePattern.test(phone)){
+        document.getElementById("phoneError").textContent =
+            "Phone number must contain exactly 10 digits.";
+        hasErrors = true;
+    }
+
+    // Date
+    if(eventDate === ""){
+        document.getElementById("dateError").textContent =
+            "Please select an event date.";
+        hasErrors = true;
+    }
+
+    // Event
+    if(event === ""){
+        document.getElementById("eventError").textContent =
+            "Please select an event.";
+        hasErrors = true;
+    }
+
+    // Package
+    if(packageChoice === ""){
+        document.getElementById("packageError").textContent =
+            "Please choose a package.";
+        hasErrors = true;
+    }
+
+    // Details
+    if(details === ""){
+        document.getElementById("detailsError").textContent =
+            "Please provide your event requirements.";
+        hasErrors = true;
+    }
+
+    if(hasErrors){
+        return;
+    }
+
+    // Success
+    showToast("🎉 Thank you for booking with Elite Events! We will contact you shortly.");
 
     this.reset();
 

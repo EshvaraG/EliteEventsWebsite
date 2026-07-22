@@ -9,6 +9,23 @@ import {
     setDoc
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
+// Toast notification
+const toast = document.getElementById("toast");
+
+function showToast(message) {
+
+    toast.textContent = message;
+
+    toast.classList.add("show");
+
+    setTimeout(() => {
+
+        toast.classList.remove("show");
+
+    }, 2000);
+
+}
+
 const signupBtn = document.getElementById("signupBtn");
 
 signupBtn.addEventListener("click", async () => {
@@ -25,31 +42,39 @@ signupBtn.addEventListener("click", async () => {
     // Email validation
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // Variable to keep track of validation errors
     let hasErrors = false;
 
     // Name validation
     if (name === "") {
+
         document.getElementById("nameError").textContent =
             "Please enter your full name.";
+
         hasErrors = true;
+
     }
 
     // Email validation
     if (!emailPattern.test(email)) {
+
         document.getElementById("emailError").textContent =
             "Please enter a valid email address (e.g. name@example.com).";
+
         hasErrors = true;
+
     }
 
     // Password validation
     if (password.length < 6) {
+
         document.getElementById("passwordError").textContent =
             "Password must be at least 6 characters long.";
+
         hasErrors = true;
+
     }
 
-    // Stop if any validation errors exist
+    // Stop if validation fails
     if (hasErrors) {
         return;
     }
@@ -65,14 +90,22 @@ signupBtn.addEventListener("click", async () => {
         const user = userCredential.user;
 
         await setDoc(doc(db, "users", user.uid), {
+
             fullName: name,
             email: email,
             createdAt: new Date()
+
         });
 
-        alert("🎉 Successfully signed up!");
+        // Show success toast
+        showToast("🎉 Successfully signed up! Redirecting to Login...");
 
-        window.location.href = "login.html";
+        // Redirect after toast
+        setTimeout(() => {
+
+            window.location.href = "login.html";
+
+        }, 1500);
 
     }
 
@@ -81,23 +114,31 @@ signupBtn.addEventListener("click", async () => {
         switch (error.code) {
 
             case "auth/email-already-in-use":
+
                 document.getElementById("emailError").textContent =
                     "This email address is already registered.";
+
                 break;
 
             case "auth/invalid-email":
+
                 document.getElementById("emailError").textContent =
                     "Please enter a valid email address.";
+
                 break;
 
             case "auth/weak-password":
+
                 document.getElementById("passwordError").textContent =
                     "Password is too weak. Please use at least 6 characters.";
+
                 break;
 
             default:
+
                 document.getElementById("passwordError").textContent =
                     error.message;
+
         }
 
     }

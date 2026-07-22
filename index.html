@@ -18,6 +18,8 @@
     </head>
     <body>
 
+        <div id="toast" class="toast"></div>
+
         <!---Header--->
         <header class="head">
             <a href="#" class="logo">Elite Events</a>
@@ -510,13 +512,38 @@
                     <h1>Contact us</h1>
                     <p>123 Rosewood Avenue, Sunset Valley, Cape Harmony, 4501</p>
                     <p>We would love to hear from you, Contact us:</p>
-                    <form action="#" id="formdetails">
-                        <input type="text" id="name" placeholder="Enter your name" required>
-                        <input type="text" id="email" placeholder="Enter your email" required>
-                        <input type="text" id="mobile" placeholder="Enter your mobile number" required>
-                        <textarea name="msg" id="" rows="8" cols="10" placeholder="Write your message"></textarea>
-                        <button type="submit" class="btn">Submit</button>
-                    </form>
+                    <form action="#" id="formdetails" novalidate>
+
+    <input
+        type="text"
+        id="name"
+        placeholder="Enter your name">
+    <small id="nameError" class="error"></small>
+
+    <input
+        type="email"
+        id="email"
+        placeholder="Enter your email">
+    <small id="emailError" class="error"></small>
+
+    <input
+        type="text"
+        id="mobile"
+        placeholder="Enter your mobile number">
+    <small id="mobileError" class="error"></small>
+
+    <textarea
+        id="message"
+        rows="8"
+        cols="10"
+        placeholder="Write your message"></textarea>
+    <small id="messageError" class="error"></small>
+
+    <button type="submit" class="btn">
+        Submit
+    </button>
+
+</form>
                 </div>
             </div>
         </div>
@@ -646,17 +673,87 @@
 
 <script>
 
+    const toast = document.getElementById("toast");
+
+function showToast(message) {
+    toast.textContent = message;
+    toast.classList.add("show");
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2000);
+}
+
+
 // Contact Form
 
 document.getElementById("formdetails").addEventListener("submit", function(e){
 
     e.preventDefault();
 
-    alert("✅ Your message has been submitted successfully!");
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const mobile = document.getElementById("mobile").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    document.getElementById("nameError").textContent = "";
+    document.getElementById("emailError").textContent = "";
+    document.getElementById("mobileError").textContent = "";
+    document.getElementById("messageError").textContent = "";
+
+    let hasErrors = false;
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phonePattern = /^[0-9]{10}$/;
+
+    // Name
+    if(name === ""){
+        document.getElementById("nameError").textContent =
+            "Please enter your name.";
+        hasErrors = true;
+    }
+
+    // Email
+    if(email === ""){
+        document.getElementById("emailError").textContent =
+            "Please enter your email address.";
+        hasErrors = true;
+    }
+    else if(!emailPattern.test(email)){
+        document.getElementById("emailError").textContent =
+            "Please enter a valid email address.";
+        hasErrors = true;
+    }
+
+    // Mobile
+    if(mobile === ""){
+        document.getElementById("mobileError").textContent =
+            "Please enter your mobile number.";
+        hasErrors = true;
+    }
+    else if(!phonePattern.test(mobile)){
+        document.getElementById("mobileError").textContent =
+            "Phone number must contain exactly 10 digits.";
+        hasErrors = true;
+    }
+
+    // Message
+    if(message === ""){
+        document.getElementById("messageError").textContent =
+            "Please enter your message.";
+        hasErrors = true;
+    }
+
+    if(hasErrors){
+        return;
+    }
+
+    showToast("✅ Your message has been submitted successfully!");
 
     this.reset();
 
 });
+
 
 // Newsletter
 
@@ -664,7 +761,7 @@ document.getElementById("newsletterForm").addEventListener("submit", function(e)
 
     e.preventDefault();
 
-    alert("🎉 You have successfully subscribed to our newsletter!");
+    showToast("🎉 You have successfully subscribed to our newsletter!");
 
     this.reset();
 
